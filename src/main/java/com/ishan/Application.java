@@ -1,4 +1,4 @@
-package com.abhishekvermaa10;
+package com.ishan;
 
 import java.util.List;
 import java.util.Scanner;
@@ -10,17 +10,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
-import com.abhishekvermaa10.dto.OwnerDTO;
-import com.abhishekvermaa10.dto.PetDTO;
-import com.abhishekvermaa10.service.OwnerService;
-import com.abhishekvermaa10.service.PetService;
-import com.abhishekvermaa10.util.InputUtil;
+import com.ishan.dto.OwnerDTO;
+import com.ishan.dto.PetDTO;
+import com.ishan.service.OwnerService;
+import com.ishan.service.PetService;
+import com.ishan.util.InputUtil;
 
 import lombok.RequiredArgsConstructor;
 
-/**
- * @author abhishekvermaa10
- */
+
 @RequiredArgsConstructor
 @PropertySource("classpath:messages.properties")
 @SpringBootApplication
