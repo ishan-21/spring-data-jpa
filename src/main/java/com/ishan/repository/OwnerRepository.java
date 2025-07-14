@@ -1,13 +1,11 @@
-package com.abhishekvermaa10.repository;
+package com.ishan.repository;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.abhishekvermaa10.entity.Owner;
+import com.ishan.entity.Owner;
 
-/**
- * @author abhishekvermaa10
- */
+
 public interface OwnerRepository {
 	
 	void save(Owner owner);

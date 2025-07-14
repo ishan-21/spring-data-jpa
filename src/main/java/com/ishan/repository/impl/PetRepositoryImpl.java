@@ -1,18 +1,16 @@
-package com.abhishekvermaa10.repository.impl;
+package com.ishan.repository.impl;
 
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.abhishekvermaa10.entity.Pet;
-import com.abhishekvermaa10.repository.PetRepository;
+import com.ishan.entity.Pet;
+import com.ishan.repository.PetRepository;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceUnit;
 
-/**
- * @author abhishekvermaa10
- */
+
 @Repository
 public class PetRepositoryImpl implements PetRepository {
 

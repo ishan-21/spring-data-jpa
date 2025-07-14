@@ -1,13 +1,11 @@
-package com.abhishekvermaa10.service;
+package com.ishan.service;
 
 import java.util.List;
 
-import com.abhishekvermaa10.dto.OwnerDTO;
-import com.abhishekvermaa10.exception.OwnerNotFoundException;
+import com.ishan.dto.OwnerDTO;
+import com.ishan.exception.OwnerNotFoundException;
 
-/**
- * @author abhishekvermaa10
- */
+
 public interface OwnerService {
 	
 	void saveOwner(OwnerDTO ownerDTO);

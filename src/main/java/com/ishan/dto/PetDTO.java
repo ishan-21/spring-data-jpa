@@ -1,7 +1,7 @@
-package com.abhishekvermaa10.dto;
+package com.ishan.dto;
 
-import com.abhishekvermaa10.enums.Gender;
-import com.abhishekvermaa10.enums.PetType;
+import com.ishan.enums.Gender;
+import com.ishan.enums.PetType;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -10,9 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-/**
- * @author abhishekvermaa10
- */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)

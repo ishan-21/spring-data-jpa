@@ -1,8 +1,6 @@
-package com.abhishekvermaa10.exception;
+package com.ishan.exception;
 
-/**
- * @author abhishekvermaa10
- */
+
 public class OwnerNotFoundException extends Exception {
 	  
 	private static final long serialVersionUID = 1L; 

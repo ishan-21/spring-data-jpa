@@ -1,23 +1,21 @@
-package com.abhishekvermaa10.util;
+package com.ishan.util;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import com.abhishekvermaa10.dto.DomesticPetDTO;
-import com.abhishekvermaa10.dto.OwnerDTO;
-import com.abhishekvermaa10.dto.PetDTO;
-import com.abhishekvermaa10.dto.WildPetDTO;
-import com.abhishekvermaa10.enums.Gender;
-import com.abhishekvermaa10.enums.PetType;
+import com.ishan.dto.DomesticPetDTO;
+import com.ishan.dto.OwnerDTO;
+import com.ishan.dto.PetDTO;
+import com.ishan.dto.WildPetDTO;
+import com.ishan.enums.Gender;
+import com.ishan.enums.PetType;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-/**
- * @author abhishekvermaa10
- */
+
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class InputUtil {
 

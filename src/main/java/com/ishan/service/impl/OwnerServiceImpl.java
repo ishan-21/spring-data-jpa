@@ -1,4 +1,4 @@
-package com.abhishekvermaa10.service.impl;
+package com.ishan.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,18 +6,16 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.abhishekvermaa10.dto.OwnerDTO;
-import com.abhishekvermaa10.entity.Owner;
-import com.abhishekvermaa10.exception.OwnerNotFoundException;
-import com.abhishekvermaa10.repository.OwnerRepository;
-import com.abhishekvermaa10.service.OwnerService;
-import com.abhishekvermaa10.util.OwnerMapper;
+import com.ishan.dto.OwnerDTO;
+import com.ishan.entity.Owner;
+import com.ishan.exception.OwnerNotFoundException;
+import com.ishan.repository.OwnerRepository;
+import com.ishan.service.OwnerService;
+import com.ishan.util.OwnerMapper;
 
 import lombok.RequiredArgsConstructor;
 
-/**
- * @author abhishekvermaa10
- */
+
 @RequiredArgsConstructor
 @Service
 public class OwnerServiceImpl implements OwnerService {

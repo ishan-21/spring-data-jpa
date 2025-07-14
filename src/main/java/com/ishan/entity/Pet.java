@@ -1,7 +1,7 @@
-package com.abhishekvermaa10.entity;
+package com.ishan.entity;
 
-import com.abhishekvermaa10.enums.Gender;
-import com.abhishekvermaa10.enums.PetType;
+import com.ishan.enums.Gender;
+import com.ishan.enums.PetType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,9 +14,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * @author abhishekvermaa10
- */
+
 @Setter
 @Getter
 @Inheritance(strategy = InheritanceType.JOINED)

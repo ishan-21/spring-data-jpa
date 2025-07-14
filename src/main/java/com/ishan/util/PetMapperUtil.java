@@ -1,20 +1,18 @@
-package com.abhishekvermaa10.util;
+package com.ishan.util;
 
-import com.abhishekvermaa10.dto.DomesticPetDTO;
-import com.abhishekvermaa10.dto.OwnerDTO;
-import com.abhishekvermaa10.dto.PetDTO;
-import com.abhishekvermaa10.dto.WildPetDTO;
-import com.abhishekvermaa10.entity.DomesticPet;
-import com.abhishekvermaa10.entity.Owner;
-import com.abhishekvermaa10.entity.Pet;
-import com.abhishekvermaa10.entity.WildPet;
+import com.ishan.dto.DomesticPetDTO;
+import com.ishan.dto.OwnerDTO;
+import com.ishan.dto.PetDTO;
+import com.ishan.dto.WildPetDTO;
+import com.ishan.entity.DomesticPet;
+import com.ishan.entity.Owner;
+import com.ishan.entity.Pet;
+import com.ishan.entity.WildPet;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-/**
- * @author abhishekvermaa10
- */
+
 @Deprecated
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PetMapperUtil {

@@ -1,19 +1,17 @@
-package com.abhishekvermaa10.service.impl;
+package com.ishan.service.impl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.abhishekvermaa10.dto.PetDTO;
-import com.abhishekvermaa10.exception.PetNotFoundException;
-import com.abhishekvermaa10.repository.PetRepository;
-import com.abhishekvermaa10.service.PetService;
-import com.abhishekvermaa10.util.PetMapper;
+import com.ishan.dto.PetDTO;
+import com.ishan.exception.PetNotFoundException;
+import com.ishan.repository.PetRepository;
+import com.ishan.service.PetService;
+import com.ishan.util.PetMapper;
 
 import lombok.RequiredArgsConstructor;
 
-/**
- * @author abhishekvermaa10
- */
+
 @RequiredArgsConstructor
 @Service
 public class PetServiceImpl implements PetService {
