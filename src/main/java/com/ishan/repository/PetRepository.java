@@ -1,12 +1,9 @@
 package com.ishan.repository;
 
-import java.util.Optional;
 
 import com.ishan.entity.Pet;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-
-public interface PetRepository {
-	
-	Optional<Pet> findById(int petId);
+public interface PetRepository extends JpaRepository<Pet, Integer> {
 	
 }
