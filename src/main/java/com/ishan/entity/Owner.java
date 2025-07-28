@@ -1,6 +1,6 @@
-package com.ishan.entity;
+package com.abhishekvermaa10.entity;
 
-import com.ishan.enums.Gender;
+import com.abhishekvermaa10.enums.Gender;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -13,7 +13,9 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-
+/**
+ * @author abhishekvermaa10
+ */
 @Setter
 @Getter
 @Table(name = "owner_table")

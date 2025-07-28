@@ -1,6 +1,6 @@
-package com.ishan.dto;
+package com.abhishekvermaa10.dto;
 
-import com.ishan.enums.Gender;
+import com.abhishekvermaa10.enums.Gender;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
+/**
+ * @author abhishekvermaa10
+ */
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

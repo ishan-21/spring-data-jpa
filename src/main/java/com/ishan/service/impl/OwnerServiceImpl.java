@@ -1,66 +1,64 @@
-package com.ishan.service.impl;
+package com.abhishekvermaa10.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.ishan.dto.OwnerDTO;
-import com.ishan.entity.Owner;
-import com.ishan.exception.OwnerNotFoundException;
-import com.ishan.repository.OwnerRepository;
-import com.ishan.service.OwnerService;
-import com.ishan.util.OwnerMapper;
+import com.abhishekvermaa10.dto.OwnerDTO;
+import com.abhishekvermaa10.repository.OwnerRepository;
+import com.abhishekvermaa10.service.OwnerService;
+import com.abhishekvermaa10.util.OwnerMapper;
 
 import lombok.RequiredArgsConstructor;
 
-
+/**
+ * @author abhishekvermaa10
+ */
 @RequiredArgsConstructor
 @Service
 public class OwnerServiceImpl implements OwnerService {
 
 	private final OwnerRepository ownerRepository;
 	private final OwnerMapper ownerMapper;
-	@Value("${owner.not.found}")
-	private String ownerNotFound;
-
-	@Override
-	public void saveOwner(OwnerDTO ownerDTO) {
-		Owner owner = ownerMapper.ownerDTOToOwner(ownerDTO);
-		ownerRepository.save(owner);
-	}
-
-	@Override
-	public OwnerDTO findOwner(int ownerId) throws OwnerNotFoundException {
-		return ownerRepository.findById(ownerId)
-				.map(ownerMapper::ownerToOwnerDTO)
-				.orElseThrow(() -> new OwnerNotFoundException(String.format(ownerNotFound, ownerId)));
-	}
-
-	@Override
-	public void updatePetDetails(int ownerId, String petName) throws OwnerNotFoundException {
-		Optional<Owner> optionalOwner = ownerRepository.findById(ownerId);
-		if (optionalOwner.isEmpty()) {
-			throw new OwnerNotFoundException(String.format(ownerNotFound, ownerId));
-		} else {
-			ownerRepository.updatePetDetails(ownerId, petName);
-		}
-	}
-
-	@Override
-	public void deleteOwner(int ownerId) throws OwnerNotFoundException {
-		Optional<Owner> optionalOwner = ownerRepository.findById(ownerId);
-		if (optionalOwner.isEmpty()) {
-			throw new OwnerNotFoundException(String.format(ownerNotFound, ownerId));
-		} else {
-			ownerRepository.deleteById(ownerId);
-		}
-	}
 
 	@Override
 	public List<OwnerDTO> findAllOwners() {
-		return ownerRepository.findAll()
+		return ownerRepository.findAll() 
+				.stream()
+				.map(ownerMapper::ownerToOwnerDTO)
+				.toList();
+	}
+
+	@Override
+	public List<OwnerDTO> findAllSortedOwners(String sortingParameter, boolean sortDescending) {
+		Direction direction = sortDescending ? Direction.DESC : Direction.ASC;
+		Sort sort = Sort.by(direction, sortingParameter);
+		return ownerRepository.findAll(sort)
+				.stream()
+				.map(ownerMapper::ownerToOwnerDTO)
+				.toList();
+	}
+
+	@Override
+	public List<OwnerDTO> findAllPaginatedOwners(int pageNumber, int numberOfRecordsPerPage) {
+		Pageable pageable = PageRequest.of(pageNumber, numberOfRecordsPerPage);
+		return ownerRepository.findAll(pageable)
+				.stream()
+				.map(ownerMapper::ownerToOwnerDTO)
+				.toList();
+	}
+
+	@Override
+	public List<OwnerDTO> findAllPaginatedAndSortedOwners(int pageNumber, int numberOfRecordsPerPage,
+			String sortingParameter, boolean sortDescending) {
+		Direction direction = sortDescending ? Direction.DESC : Direction.ASC;
+		Sort sort = Sort.by(direction, sortingParameter);
+		Pageable pageable = PageRequest.of(pageNumber, numberOfRecordsPerPage, sort);
+		return ownerRepository.findAll(pageable)
 				.stream()
 				.map(ownerMapper::ownerToOwnerDTO)
 				.toList();
