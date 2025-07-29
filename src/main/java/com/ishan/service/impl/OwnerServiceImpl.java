@@ -5,14 +5,12 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import com.ishan.dto.OwnerDTO;
 import com.ishan.entity.Owner;
 import com.ishan.exception.OwnerNotFoundException;
 import com.ishan.repository.OwnerRepository;
 import com.ishan.service.OwnerService;
 import com.ishan.util.OwnerMapper;
-
 import lombok.RequiredArgsConstructor;
 
 
@@ -24,6 +22,8 @@ public class OwnerServiceImpl implements OwnerService {
 	private final OwnerMapper ownerMapper;
 	@Value("${owner.not.found}")
 	private String ownerNotFound;
+	@Value("${owner.pet.not.found}")
+	private String ownerPetNotFound;
 
 	@Override
 	public void saveOwner(OwnerDTO ownerDTO) {
@@ -64,6 +64,21 @@ public class OwnerServiceImpl implements OwnerService {
 				.stream()
 				.map(ownerMapper::ownerToOwnerDTO)
 				.toList();
+	}
+
+	@Override
+	public List<OwnerDTO> findAllOwnersByFirstNameInitials(String firstName) {
+		return ownerRepository.findByFirstNameStartingWith(firstName)
+				.stream()
+				.map(ownerMapper::ownerToOwnerDTO)
+				.toList();
+	}
+
+	@Override
+	public OwnerDTO findOwnerByPetId(int petId) {
+		return ownerRepository.findByPetId(petId)
+				.map(ownerMapper::ownerToOwnerDTO)
+				.orElseThrow(() -> new OwnerNotFoundException(String.format(ownerPetNotFound, petId)));
 	}
 
 }
