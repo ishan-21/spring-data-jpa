@@ -22,14 +22,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @PropertySource("classpath:messages.properties")
 @SpringBootApplication
-public class Demo implements CommandLineRunner {
+public class Application implements CommandLineRunner {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Demo.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 	private final OwnerService ownerService;
 	private final PetService petService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(Demo.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 	@Override

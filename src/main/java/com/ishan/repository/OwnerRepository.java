@@ -33,6 +33,9 @@ public interface OwnerRepository extends JpaRepository<Owner, Integer> {
     List<Owner> findByState(String state);
     Optional<Owner> findByMobileNumber(String mobileNumber);
     Optional<Owner> findByEmailId(String emailId);
+    Optional<Owner> findByPet_Id(int petId);
+
+
 
     // Other methods like findById, deleteById, and findAll are already provided by JpaRepository
 }

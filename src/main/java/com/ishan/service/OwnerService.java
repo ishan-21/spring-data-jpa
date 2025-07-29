@@ -20,5 +20,5 @@ public interface OwnerService {
 
 	List<OwnerDTO> findAllOwnersByFirstNameInitials(String firstName);
 
-	OwnerDTO findOwnerByPetId(int petId);
+	OwnerDTO findOwnerByPetId(int petId) throws OwnerNotFoundException;
 }

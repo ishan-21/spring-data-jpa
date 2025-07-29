@@ -75,8 +75,8 @@ public class OwnerServiceImpl implements OwnerService {
 	}
 
 	@Override
-	public OwnerDTO findOwnerByPetId(int petId) {
-		return ownerRepository.findByPetId(petId)
+	public OwnerDTO findOwnerByPetId(int petId) throws OwnerNotFoundException {
+		return ownerRepository.findByPet_Id(petId)
 				.map(ownerMapper::ownerToOwnerDTO)
 				.orElseThrow(() -> new OwnerNotFoundException(String.format(ownerPetNotFound, petId)));
 	}
