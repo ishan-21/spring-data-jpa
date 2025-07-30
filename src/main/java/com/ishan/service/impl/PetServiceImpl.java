@@ -2,7 +2,6 @@ package com.ishan.service.impl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import com.ishan.dto.PetDTO;
 import com.ishan.exception.PetNotFoundException;
 import com.ishan.repository.PetRepository;
@@ -26,6 +25,11 @@ public class PetServiceImpl implements PetService {
 		return petRepository.findById(petId)
 				.map(petMapper::petToPetDTO)
 				.orElseThrow(() -> new PetNotFoundException(String.format(petNotFound, petId)));
+	}
+
+	@Override
+	public double findAverageAgeOfPets() {
+		return petRepository.findAverageAgeOfPets();
 	}
 
 }

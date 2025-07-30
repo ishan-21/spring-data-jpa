@@ -1,12 +1,12 @@
 package com.ishan.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.ishan.dto.OwnerDTO;
-import com.ishan.entity.Owner;
 import com.ishan.exception.OwnerNotFoundException;
 import com.ishan.repository.OwnerRepository;
 import com.ishan.service.OwnerService;
@@ -25,46 +25,13 @@ public class OwnerServiceImpl implements OwnerService {
 	@Value("${owner.pet.not.found}")
 	private String ownerPetNotFound;
 
-	@Override
-	public void saveOwner(OwnerDTO ownerDTO) {
-		Owner owner = ownerMapper.ownerDTOToOwner(ownerDTO);
-		ownerRepository.save(owner);
-	}
 
-	@Override
 	public OwnerDTO findOwner(int ownerId) throws OwnerNotFoundException {
 		return ownerRepository.findById(ownerId)
 				.map(ownerMapper::ownerToOwnerDTO)
 				.orElseThrow(() -> new OwnerNotFoundException(String.format(ownerNotFound, ownerId)));
 	}
 
-	@Override
-	public void updatePetDetails(int ownerId, String petName) throws OwnerNotFoundException {
-		Optional<Owner> optionalOwner = ownerRepository.findById(ownerId);
-		if (optionalOwner.isEmpty()) {
-			throw new OwnerNotFoundException(String.format(ownerNotFound, ownerId));
-		} else {
-			ownerRepository.updatePetDetails(ownerId, petName);
-		}
-	}
-
-	@Override
-	public void deleteOwner(int ownerId) throws OwnerNotFoundException {
-		Optional<Owner> optionalOwner = ownerRepository.findById(ownerId);
-		if (optionalOwner.isEmpty()) {
-			throw new OwnerNotFoundException(String.format(ownerNotFound, ownerId));
-		} else {
-			ownerRepository.deleteById(ownerId);
-		}
-	}
-
-	@Override
-	public List<OwnerDTO> findAllOwners() {
-		return ownerRepository.findAll()
-				.stream()
-				.map(ownerMapper::ownerToOwnerDTO)
-				.toList();
-	}
 
 	@Override
 	public List<OwnerDTO> findAllOwnersByFirstNameInitials(String firstName) {
@@ -79,6 +46,20 @@ public class OwnerServiceImpl implements OwnerService {
 		return ownerRepository.findByPet_Id(petId)
 				.map(ownerMapper::ownerToOwnerDTO)
 				.orElseThrow(() -> new OwnerNotFoundException(String.format(ownerPetNotFound, petId)));
+	}
+
+	@Override
+	public List<OwnerDTO> findByAllOwnersByPetDateOfBirthBetween(LocalDate startDate, LocalDate endDate) {
+		return ownerRepository.findByPetDateOfBirthBetween(startDate, endDate)
+				.stream()
+				.map(ownerMapper::ownerToOwnerDTO)
+				.toList();
+	}
+
+	@Override
+	public List<Object[]> findIdAndFirstNameAndLastNameAndPetNameOfPaginatedOwners(int i, int pageSize) {
+		Pageable pageable = PageRequest.of(i, pageSize);
+		return ownerRepository.findIdAndFirstNameAndLastNameAndPetName(pageable);
 	}
 
 }

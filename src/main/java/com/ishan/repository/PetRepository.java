@@ -1,16 +1,15 @@
 package com.ishan.repository;
 
-
 import com.ishan.entity.Pet;
-import com.ishan.enums.Gender;
-import com.ishan.enums.PetType;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
+import org.springframework.data.jpa.repository.Query;
+import java.util.Optional;
 
 public interface PetRepository extends JpaRepository<Pet, Integer> {
-    // These methods follow Spring Data JPA's naming convention, where the method name is parsed to generate the appropriate JPQL query. The framework handles the implementation of these methods at runtime.
-	List<Pet> findByName(String name);
-    List<Pet> readByType(PetType type);
-    List<Pet> getByGender(Gender gender);
+
+    @Query("select p from Pet p join fetch p.owner where p.id = :petId")
+    Optional<Pet> getById(int petId);
+
+    @Query("SELECT AVG(YEAR(CURRENT_DATE()) - YEAR(p.birthDate)) FROM Pet p")
+    double findAverageAgeOfPets();
 }

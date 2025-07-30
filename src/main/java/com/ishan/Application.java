@@ -1,5 +1,6 @@
 package com.ishan;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -64,6 +65,29 @@ public class Application implements CommandLineRunner {
 						System.out.println(String.format("Found owner with petId %s.", petId));
 						System.out.println(ownerDTO);
 						break;
+					case 5:
+						LocalDate startDate = InputUtil.acceptFromPetBirthDateToOperate(scanner);
+						LocalDate endDate = InputUtil.acceptToPetBirthDateToOperate(scanner);
+						ownerDTOList = ownerService.findByAllOwnersByPetDateOfBirthBetween(startDate, endDate);
+						System.out.println(String.format("There are %s owners whose pets were born between %s and %s.",
+								ownerDTOList.size(), startDate, endDate));
+						ownerDTOList.forEach(System.out::println);
+						break;
+					case 6:
+						double averageAge = petService.findAverageAgeOfPets();
+						System.out.println(String.format("Average age of pet is %s years.", averageAge));
+						break;
+					case 7:
+						int pageNumber = InputUtil.acceptPageNumberToOperate(scanner);
+						int pageSize = InputUtil.acceptPageSizeToOperate(scanner);
+						List<Object[]> detailsList = ownerService
+								.findIdAndFirstNameAndLastNameAndPetNameOfPaginatedOwners(pageNumber - 1, pageSize);
+						System.out.println(
+								String.format("Showing %s records on page number %s.", detailsList.size(), pageNumber));
+						detailsList.forEach(details -> System.out
+								.println(String.format("ownerId: %s, firstName: %s, lastName: %s, petName: %s", details[0],
+										details[1], details[2], details[3])));
+						break;
 					default:
 						System.out.println("Invalid option entered.");
 				}
@@ -74,4 +98,3 @@ public class Application implements CommandLineRunner {
 	}
 
 }
-
