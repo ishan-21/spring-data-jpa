@@ -39,16 +39,6 @@ public class OwnerServiceImpl implements OwnerService {
 	}
 
 	@Override
-	public void updatePetDetails(int ownerId, String petName) throws OwnerNotFoundException {
-		Optional<Owner> optionalOwner = ownerRepository.findById(ownerId);
-		if (optionalOwner.isEmpty()) {
-			throw new OwnerNotFoundException(String.format(ownerNotFound, ownerId));
-		} else {
-			ownerRepository.updatePetDetails(ownerId, petName);
-		}
-	}
-
-	@Override
 	public void deleteOwner(int ownerId) throws OwnerNotFoundException {
 		Optional<Owner> optionalOwner = ownerRepository.findById(ownerId);
 		if (optionalOwner.isEmpty()) {

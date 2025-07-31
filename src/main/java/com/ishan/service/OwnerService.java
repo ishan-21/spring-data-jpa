@@ -12,8 +12,6 @@ public interface OwnerService {
 
 	OwnerDTO findOwner(int ownerId) throws OwnerNotFoundException;
 
-	void updatePetDetails(int ownerId, String petName) throws OwnerNotFoundException;
-
 	void deleteOwner(int ownerId) throws OwnerNotFoundException;
 
 	List<OwnerDTO> findAllOwners();
