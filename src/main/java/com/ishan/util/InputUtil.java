@@ -1,13 +1,11 @@
-package com.abhishekvermaa10.util;
+package com.ishan.util;
 
 import java.util.Scanner;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-/**
- * @author abhishekvermaa10
- */
+
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class InputUtil {
 

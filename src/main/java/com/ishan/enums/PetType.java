@@ -1,8 +1,6 @@
-package com.abhishekvermaa10.enums;
+package com.ishan.enums;
 
-/**
- * @author abhishekvermaa10
- */
+
 public enum PetType {
 	
 	BIRD, 

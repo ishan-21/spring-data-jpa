@@ -1,4 +1,4 @@
-package com.abhishekvermaa10.entity;
+package com.ishan.entity;
 
 import java.time.LocalDate;
 
@@ -8,9 +8,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * @author abhishekvermaa10
- */
+
 @Setter
 @Getter 
 @Table(name = "domestic_pet_table")

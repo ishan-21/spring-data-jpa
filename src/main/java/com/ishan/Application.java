@@ -1,4 +1,4 @@
-package com.abhishekvermaa10;
+package com.ishan;
 
 import java.util.List;
 import java.util.Scanner;
@@ -9,24 +9,22 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.abhishekvermaa10.dto.OwnerDTO;
-import com.abhishekvermaa10.service.OwnerService;
-import com.abhishekvermaa10.util.InputUtil;
+import com.ishan.dto.OwnerDTO;
+import com.ishan.service.OwnerService;
+import com.ishan.util.InputUtil;
 
 import lombok.RequiredArgsConstructor;
 
-/**
- * @author abhishekvermaa10
- */
+
 @RequiredArgsConstructor
 @SpringBootApplication
-public class Demo implements CommandLineRunner {
+public class Application implements CommandLineRunner {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Demo.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 	private final OwnerService ownerService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(Demo.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 	@Override

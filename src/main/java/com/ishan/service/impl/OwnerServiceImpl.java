@@ -1,23 +1,20 @@
-package com.abhishekvermaa10.service.impl;
+package com.ishan.service.impl;
 
 import java.util.List;
 
+import com.ishan.repository.OwnerRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
-
-import com.abhishekvermaa10.dto.OwnerDTO;
-import com.abhishekvermaa10.repository.OwnerRepository;
-import com.abhishekvermaa10.service.OwnerService;
-import com.abhishekvermaa10.util.OwnerMapper;
+import com.ishan.dto.OwnerDTO;
+import com.ishan.service.OwnerService;
+import com.ishan.util.OwnerMapper;
 
 import lombok.RequiredArgsConstructor;
 
-/**
- * @author abhishekvermaa10
- */
+
 @RequiredArgsConstructor
 @Service
 public class OwnerServiceImpl implements OwnerService {

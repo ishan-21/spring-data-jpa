@@ -1,4 +1,4 @@
-package com.abhishekvermaa10.entity;
+package com.ishan.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,9 +6,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * @author abhishekvermaa10
- */
+
 @Setter
 @Getter
 @Table(name = "wild_pet_table")
