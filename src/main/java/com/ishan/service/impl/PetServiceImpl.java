@@ -22,7 +22,7 @@ public class PetServiceImpl implements PetService {
 
 	@Override
 	public PetDTO findPet(int petId) throws PetNotFoundException {
-		return petRepository.findById(petId)
+		return petRepository.getById(petId)
 				.map(petMapper::petToPetDTO)
 				.orElseThrow(() -> new PetNotFoundException(String.format(petNotFound, petId)));
 	}
