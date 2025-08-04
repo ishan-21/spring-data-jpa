@@ -1,5 +1,7 @@
 package com.ishan.service.impl;
 
+import com.ishan.entity.Pet;
+import com.ishan.repository.CustomPetRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.ishan.dto.PetDTO;
@@ -9,6 +11,8 @@ import com.ishan.service.PetService;
 import com.ishan.util.PetMapper;
 
 import lombok.RequiredArgsConstructor;
+
+import java.util.Objects;
 
 
 @RequiredArgsConstructor
@@ -22,9 +26,11 @@ public class PetServiceImpl implements PetService {
 
 	@Override
 	public PetDTO findPet(int petId) throws PetNotFoundException {
-		return petRepository.getById(petId)
-				.map(petMapper::petToPetDTO)
-				.orElseThrow(() -> new PetNotFoundException(String.format(petNotFound, petId)));
+		Pet pet = petRepository.findById(petId);
+		if(Objects.isNull(pet)) {
+			throw new PetNotFoundException(String.format(petNotFound, petId));
+		}
+		return petMapper.petToPetDTO(pet);
 	}
 
 	@Override

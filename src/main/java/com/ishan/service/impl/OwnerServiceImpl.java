@@ -2,6 +2,10 @@ package com.ishan.service.impl;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
+
+import com.ishan.entity.Owner;
+import com.ishan.repository.CustomOwnerRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -25,11 +29,13 @@ public class OwnerServiceImpl implements OwnerService {
 	@Value("${owner.pet.not.found}")
 	private String ownerPetNotFound;
 
-
+	@Override
 	public OwnerDTO findOwner(int ownerId) throws OwnerNotFoundException {
-		return ownerRepository.findById(ownerId)
-				.map(ownerMapper::ownerToOwnerDTO)
-				.orElseThrow(() -> new OwnerNotFoundException(String.format(ownerNotFound, ownerId)));
+		Owner owner = ownerRepository.findById(ownerId);
+		if(Objects.isNull(owner)) {
+			throw new OwnerNotFoundException(String.format(ownerNotFound, ownerId));
+		}
+		return ownerMapper.ownerToOwnerDTO(owner);
 	}
 
 
@@ -43,9 +49,11 @@ public class OwnerServiceImpl implements OwnerService {
 
 	@Override
 	public OwnerDTO findOwnerByPetId(int petId) throws OwnerNotFoundException {
-		return ownerRepository.findByPet_Id(petId)
-				.map(ownerMapper::ownerToOwnerDTO)
-				.orElseThrow(() -> new OwnerNotFoundException(String.format(ownerPetNotFound, petId)));
+		Owner owner = ownerRepository.findByPetId(petId);
+		if(Objects.isNull(owner)) {
+			throw new OwnerNotFoundException(String.format(ownerPetNotFound, petId));
+		}
+		return ownerMapper.ownerToOwnerDTO(owner);
 	}
 
 	@Override
@@ -57,9 +65,8 @@ public class OwnerServiceImpl implements OwnerService {
 	}
 
 	@Override
-	public List<Object[]> findIdAndFirstNameAndLastNameAndPetNameOfPaginatedOwners(int i, int pageSize) {
-		Pageable pageable = PageRequest.of(i, pageSize);
-		return ownerRepository.findIdAndFirstNameAndLastNameAndPetName(pageable);
+	public List<Object[]> findIdAndFirstNameAndLastNameAndPetNameOfPaginatedOwners(int pageNumber, int pageSize) {
+		return ownerRepository.findIdAndFirstNameAndLastNameAndPetName(pageNumber,pageSize);
 	}
 
 }
