@@ -10,11 +10,14 @@ public interface OwnerService {
 
 	OwnerDTO findOwner(int ownerId) throws OwnerNotFoundException;
 
-	List<OwnerDTO> findAllOwnersByFirstNameInitials(String firstName);
 
-	OwnerDTO findOwnerByPetId(int petId) throws OwnerNotFoundException;
+	void updatePetDetails(int ownerId, String petName) throws OwnerNotFoundException;
 
-    List<OwnerDTO> findByAllOwnersByPetDateOfBirthBetween(LocalDate startDate, LocalDate endDate);
+	void updatePetDetailsV2(int ownerId, String petName);
 
-	List<Object[]> findIdAndFirstNameAndLastNameAndPetNameOfPaginatedOwners(int i, int pageSize);
+	void deleteOwner(int ownerId) throws OwnerNotFoundException;
+
+	void deleteOwners(List<Integer> ownerIds);
+
+	void deleteOwnersV2(List<Integer> ownerIds);
 }
