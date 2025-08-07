@@ -20,4 +20,6 @@ public interface OwnerService {
 	void deleteOwners(List<Integer> ownerIds);
 
 	void deleteOwnersV2(List<Integer> ownerIds);
+
+	void deleteOwnersV3(List<Integer> ownerIds) throws OwnerNotFoundException;
 }

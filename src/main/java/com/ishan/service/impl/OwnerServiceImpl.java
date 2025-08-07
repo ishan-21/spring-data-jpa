@@ -10,6 +10,7 @@ import com.ishan.repository.OwnerRepository;
 import com.ishan.service.OwnerService;
 import com.ishan.util.OwnerMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @RequiredArgsConstructor
@@ -49,12 +50,20 @@ public class OwnerServiceImpl implements OwnerService {
 
 	@Override
 	public void deleteOwners(List<Integer> ownerIds) {
-		List<Owner> owners = ownerRepository.findAllById(ownerIds);
-		ownerRepository.deleteAll(owners);
+		ownerRepository.deleteAllById(ownerIds);
 	}
 
 	@Override
 	public void deleteOwnersV2(List<Integer> ownerIds) {
 		ownerRepository.deleteByIds(ownerIds);
 	}
+
+	@Transactional(rollbackFor = OwnerNotFoundException.class) // this transactions rollsback if OwnerNotFoundException is thrown i.e. any of the ownerIds is not found
+	@Override
+	public void deleteOwnersV3(List<Integer> ownerIds) throws OwnerNotFoundException {
+		for (Integer ownerId : ownerIds) {
+			deleteOwner(ownerId);
+		}
+	}
+
 }

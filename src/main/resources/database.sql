@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS petistaan;
-USE petistaan;
+CREATE DATABASE IF NOT EXISTS petistaaaaaaan;
+USE petistaaaaaaan;
 
 CREATE TABLE owner_table (
 	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,

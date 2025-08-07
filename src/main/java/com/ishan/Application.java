@@ -69,6 +69,11 @@ public class Application implements CommandLineRunner {
 						ownerService.deleteOwners(ownerIds);
 						System.out.println(String.format("Deleted owner with ownerIds %s.", ownerIds));
 						break;
+					case 7:
+						ownerIds = InputUtil.acceptOwnerIdsToOperate(scanner);
+						ownerService.deleteOwnersV3(ownerIds);
+						System.out.println(String.format("Deleted owner with ownerIds %s.", ownerIds));
+						break;
 					default:
 						System.out.println("Invalid option entered.");
 				}

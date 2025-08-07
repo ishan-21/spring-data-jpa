@@ -18,8 +18,9 @@ public class InputUtil {
 		System.out.println("Press 4 to delete owner details.");
 		System.out.println("Press 5 to delete multiple owner details with new repository method.");
 		System.out.println("Press 6 to delete multiple owner details.");
+		System.out.println("Press 7 to delete multiple owner details ONLY if all owners are found.");
 		int menuOption = scanner.nextInt();
-		if (menuOption >= 1 && menuOption <= 6) {
+		if (menuOption >= 1 && menuOption <= 7) {
 			return menuOption;
 		} else {
 			System.out.println("Invalid option entered.");
