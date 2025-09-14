@@ -2,20 +2,13 @@ package com.ishan.service;
 
 import java.util.List;
 
-import com.ishan.dto.OwnerDTO;
 import com.ishan.exception.OwnerNotFoundException;
 
 
 public interface OwnerService {
-	
-	void saveOwner(OwnerDTO ownerDTO);
-
-	OwnerDTO findOwner(int ownerId) throws OwnerNotFoundException;
 
 	void updatePetDetails(int ownerId, String petName) throws OwnerNotFoundException;
 
-	void deleteOwner(int ownerId) throws OwnerNotFoundException;
+	List<Object[]> findIdAndFirstNameAndLastNameAndPetNameOfPaginatedOwners(int pageNumber, int numberOfRecordsPerPage);
 
-	List<OwnerDTO> findAllOwners();
-	
 }
