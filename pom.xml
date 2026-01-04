@@ -13,7 +13,7 @@
 	<artifactId>spring-data-jpa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-data-jpa</name>
-	<description>Demo project for Spring Data JPA</description>
+	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
