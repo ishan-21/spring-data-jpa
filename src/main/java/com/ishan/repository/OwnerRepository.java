@@ -15,9 +15,9 @@ public interface OwnerRepository extends JpaRepository<Owner, Integer> {
      * @param petName The new name for the pet
      */
     @Modifying
-    @Query("UPDATE Owner o SET o.pet.name = :petName WHERE o.id = :ownerId")
+    @Query("UPDATE Owner o SET o.pet.name = :pet_name WHERE o.id = :owner_id")
     @Transactional
-    void updatePetDetails(@Param("ownerId") int ownerId, @Param("petName") String petName);
+    void updatePetDetails(@Param("owner_id") int ownerId, @Param("pet_name") String petName);
     
     // Other methods like findById, deleteById, and findAll are already provided by JpaRepository
     
