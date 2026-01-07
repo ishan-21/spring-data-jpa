@@ -14,7 +14,7 @@ public interface OwnerService {
 
 	OwnerDTO findOwnerByPetId(int petId) throws OwnerNotFoundException;
 
-    List<OwnerDTO> findByAllOwnersByPetDateOfBirthBetween(LocalDate startDate, LocalDate endDate);
+    List<OwnerDTO> findAllOwnersByPetDateOfBirthBetween(LocalDate startDate, LocalDate endDate);
 
 	List<Object[]> findIdAndFirstNameAndLastNameAndPetNameOfPaginatedOwners(int i, int pageSize);
 }

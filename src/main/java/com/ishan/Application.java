@@ -68,7 +68,7 @@ public class Application implements CommandLineRunner {
 					case 5:
 						LocalDate startDate = InputUtil.acceptFromPetBirthDateToOperate(scanner);
 						LocalDate endDate = InputUtil.acceptToPetBirthDateToOperate(scanner);
-						ownerDTOList = ownerService.findByAllOwnersByPetDateOfBirthBetween(startDate, endDate);
+						ownerDTOList = ownerService.findAllOwnersByPetDateOfBirthBetween(startDate, endDate);
 						System.out.println(String.format("There are %s owners whose pets were born between %s and %s.",
 								ownerDTOList.size(), startDate, endDate));
 						ownerDTOList.forEach(System.out::println);

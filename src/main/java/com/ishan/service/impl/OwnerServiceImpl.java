@@ -49,7 +49,7 @@ public class OwnerServiceImpl implements OwnerService {
 	}
 
 	@Override
-	public List<OwnerDTO> findByAllOwnersByPetDateOfBirthBetween(LocalDate startDate, LocalDate endDate) {
+	public List<OwnerDTO> findAllOwnersByPetDateOfBirthBetween(LocalDate startDate, LocalDate endDate) {
 		return ownerRepository.findByPetDateOfBirthBetween(startDate, endDate)
 				.stream()
 				.map(ownerMapper::ownerToOwnerDTO)
