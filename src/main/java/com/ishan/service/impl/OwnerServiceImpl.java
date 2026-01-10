@@ -60,7 +60,7 @@ public class OwnerServiceImpl implements OwnerService {
 
 	@Override
 	public List<OwnerDTO> findAllOwners() {
-		return ownerRepository.findAll()
+		return ownerRepository.findAllWithPets()
 				.stream()
 				.map(ownerMapper::ownerToOwnerDTO)
 				.toList();
