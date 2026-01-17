@@ -44,10 +44,9 @@ class OwnerServiceImplTest {
 		Pet expectedDomesticPet = new DomesticPet();
 		expectedOwner.setPet(expectedDomesticPet);
 		String expectedUpdatedPetName = inputPetName;
+        // When
 		when(ownerRepository.findById(inputOwnerId)).thenReturn(Optional.of(expectedOwner));
-		// When
 		ownerService.updatePetDetails(inputOwnerId, inputPetName);
-		when(ownerRepository.findById(inputOwnerId)).thenReturn(Optional.of(expectedOwner));
 		// Then
 		assertThat(expectedOwner.getPet().getName()).isEqualTo(expectedUpdatedPetName);
 		verify(ownerRepository, times(1)).findById(inputOwnerId);
