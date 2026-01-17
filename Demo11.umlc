@@ -96,7 +96,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="com.ishan.repository.impl.test.OwnerRepositoryImplTest"
+  <class id="11" language="java" name="com.ishan.repository.impl.test.OwnerRepositoryTest"
     project="Demo11" file="/Demo11/src/test/java/com/abhishekvermaa10/repository/impl/test/OwnerRepositoryImplTest.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1967" y="482"/>    
@@ -106,7 +106,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="com.ishan.repository.impl.test.PetRepositoryImplTest" project="Demo11"
+  <class id="12" language="java" name="com.ishan.repository.impl.test.PetRepositoryTest" project="Demo11"
     file="/Demo11/src/test/java/com/abhishekvermaa10/repository/impl/test/PetRepositoryImplTest.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1988" y="827"/>    

@@ -26,7 +26,7 @@ import com.ishan.util.TestDataUtil;
 @EnableJpaRepositories(basePackageClasses = OwnerRepository.class)
 @ContextConfiguration(classes = TestConfig.class)
 @DataJpaTest
-class OwnerRepositoryImplTest {
+class OwnerRepositoryTest {
 
 	@Autowired
 	private OwnerRepository ownerRepository;
