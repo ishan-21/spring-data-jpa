@@ -31,7 +31,7 @@ import com.ishan.util.TestDataUtil;
 @EnableJpaRepositories(basePackageClasses = PetRepository.class)
 @ContextConfiguration(classes = TestConfig.class)
 @DataJpaTest
-class PetRepositoryImplTest {
+class PetRepositoryTest {
 
 	@Autowired
 	private PetRepository petRepository;
@@ -39,11 +39,12 @@ class PetRepositoryImplTest {
 	@Test
 	void test_FindAverageAgeOfPet_WhenPetsExist_ShouldReturnAverageAge() {
 		// Given
-		DomesticPet domesticPet1 = TestDataUtil.createMockDomesticPet("PetName1", M, BIRD, LocalDate.of(2021, 1, 1));
+        // Change these lines in your test:
+        DomesticPet domesticPet1 = TestDataUtil.createMockDomesticPet("PetName1", M, BIRD, LocalDate.now().minusYears(5));  // 5 years old
+        DomesticPet domesticPet2 = TestDataUtil.createMockDomesticPet("PetName2", F, CAT, LocalDate.now().minusYears(3));   // 3 years old
+        DomesticPet domesticPet3 = TestDataUtil.createMockDomesticPet("PetName3", F, DOG, LocalDate.now().minusYears(4));   // 4 years old
 		petRepository.save(domesticPet1);
-		DomesticPet domesticPet2 = TestDataUtil.createMockDomesticPet("PetName2", F, CAT, LocalDate.of(2022, 2, 2));
 		petRepository.save(domesticPet2);
-		DomesticPet domesticPet3 = TestDataUtil.createMockDomesticPet("PetName3", F, DOG, LocalDate.of(2023, 3, 3));
 		petRepository.save(domesticPet3);
 		Double expectedAverageAge = Stream
 				.of(domesticPet1.getBirthDate(), domesticPet2.getBirthDate(), domesticPet3.getBirthDate())
